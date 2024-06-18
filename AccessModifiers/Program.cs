@@ -7,6 +7,7 @@ namespace AccessModifiers
     {
         static void Main(string[] args)
         {
+            // Some minor changes here
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Start instantiate from the UI console (InheritanceWithinAccessDemoClass)");
             Console.WriteLine("-----------------------------------------------------------------------");
