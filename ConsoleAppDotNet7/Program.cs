@@ -17,12 +17,11 @@ Console.WriteLine("");
 Console.WriteLine("");
 #endregion
 
-
 #region New LINQ Ordering technique
 Console.WriteLine("===================Start of Ordering/Sorting techniques===================");
-List<int> randomNumbers = new () {12,8, 26, 45, 38, 59, 72, 63, 85, 102,95 };
+List<int> randomNumbers = new() { 12, 8, 26, 45, 38, 59, 72, 63, 85, 102, 95 };
 
-List<string> randomNames = new () { "Tim", "Keith", "Jeremy", "Katy", "Julie", "Paul", "Michael" };
+List<string> randomNames = new() { "Tim", "Keith", "Jeremy", "Katy", "Julie", "Paul", "Michael" };
 
 // Old style of sorting the data
 var oldOrderingOfNumber = randomNumbers.OrderBy(x => x);
@@ -65,4 +64,50 @@ foreach (var item in peoples)
     Console.WriteLine("Order of complex object is - " + item.FirstName);
 
 Console.WriteLine("===================End of Ordering/Sorting techniques===================");
+
+Console.WriteLine("<------------------------------------------------------------------------>");
+
+#endregion
+
+#region "Play with string"
+
+Console.WriteLine("====================Start of reverse a string===========================");
+string stringToBeReversed = "This string is to be reversed";
+
+string reversedString = null;
+char[] charArray = null;
+//strThatisReversed = strToBeReversed.Reverse() .ToString();
+charArray = stringToBeReversed.ToCharArray();
+Array.Reverse(charArray);
+reversedString = new string(charArray);
+
+//char[] charArray = strToBeReversed.ToCharArray();
+//Array.Reverse(charArray);
+//string strThatisReversed = new string(charArray);
+
+Console.WriteLine("Reverse string is as follows - " + reversedString);
+
+Console.WriteLine("====================End of reverse a string===========================");
+#endregion
+
+#region "Learn Generic"
+
+Storage<int> storage = new Storage<int>();
+storage.SetValue(2);
+Console.WriteLine("Stored Integer - " + storage.GetValue());
+
+Storage<string> storage1 = new Storage<string>();
+storage1.SetValue("Some string here");
+Console.WriteLine("Stored String - " + storage1.GetValue());
+
+public class Storage<T>
+{
+    private T _value;
+
+    public void SetValue(T value)
+    { this._value = value; }
+
+    public T GetValue() { return this._value; }
+}
+
 #endregion
