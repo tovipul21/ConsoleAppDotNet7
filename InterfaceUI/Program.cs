@@ -1,4 +1,5 @@
 ﻿using InterfaceDemoLibrary;
+using System.Runtime.InteropServices;
 
 namespace InterfaceUI
 {
@@ -17,25 +18,44 @@ namespace InterfaceUI
             //Console.WriteLine($"{s1 == s3} {s1.Equals(s3)}");
 
             List<IProductModel> productList = AddSampleData();
+            CustomerModel customer = GetCustomer();
 
             foreach (var product in productList)
             {
-                Console.WriteLine($"The title of the product is {product.Title}");
+                product.ShipItem(customer);
+
+                if (product is DigitalProductModel digital)
+                    Console.WriteLine($"For the {digital.Title} you have {digital.TotalDownloadsLeft} downloads left");
             }
-
-
         }
 
         static List<IProductModel> AddSampleData()
         {
-            List<IProductModel> productModels = new List<IProductModel>();
-            productModels.Add(new PhysicalProductModel() { Title = "P - .Net Architecture Book" });
-            productModels.Add(new PhysicalProductModel() { Title = "P - Azure Architecture Book" });
-            productModels.Add(new PhysicalProductModel() { Title = "P - C# Fundamentals" });
-            productModels.Add(new PhysicalProductModel() { Title = "P - Azure Fundamentals" });
-            productModels.Add(new DigitalProductModel() { Title = "D - e Course for C#", HasOrderBeenCompleted = false });
+            List<IProductModel> productModels =
+            [
+                new PhysicalProductModel() { Title = "P - .Net Architecture Book" },
+                new PhysicalProductModel() { Title = "P - Azure Architecture Book" },
+                new PhysicalProductModel() { Title = "P - C# Fundamentals" },
+                new PhysicalProductModel() { Title = "P - Azure Fundamentals" },
+                new DigitalProductModel() { Title = "D - e Course for C#", HasOrderBeenCompleted = false },
+            ];
 
             return productModels;
+        }
+
+        static CustomerModel GetCustomer() 
+        {
+            CustomerModel customer = new CustomerModel
+            {
+                FirstName = "Vipul",
+                LastName = "Mehta",
+                EmailAddress = "someemail@gmail.com",
+                PhoneNumber = "1234567890",
+                City = "Houston",
+                State = "TX"
+            };
+
+            return customer;
         }
     }
 }

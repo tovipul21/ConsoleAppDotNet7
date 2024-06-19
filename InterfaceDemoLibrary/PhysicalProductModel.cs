@@ -8,7 +8,10 @@
 
         void IProductModel.ShipItem(CustomerModel customer)
         {
-            throw new NotImplementedException();
+            if (!HasOrderBeenCompleted) {
+                Console.WriteLine($"Simulating shipping {Title} to {customer.FirstName} {customer.LastName} in {customer.City},{customer.State}");
+                HasOrderBeenCompleted = true;
+            }
         }
     }
 }
